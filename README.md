@@ -1,14 +1,14 @@
 # Terraform module for playground VM
 
-XXX
+Deploy a virtual machine on Hetzner Cloud with a DNS record in the Hetzner DNS service
 
-## Arguments
+## Usage
 
-XXX
+See the following example how to use the module:
 
 ```hcl
 module "foo" {
-    source = "./foo"
+    source = "github.com/nicholasdille/terraform-module-playground"
 
     name = "playground"
     domain = "inmylab.de"
@@ -23,7 +23,11 @@ module "foo" {
 }
 ```
 
-XXX
+See the [official documentation](https://developer.hashicorp.com/terraform/language/modules/sources#selecting-a-revision) how to pin the module to a specific version/revision.
+
+## Arguments
+
+The following arguments are supported
 
 | Argument            | Type   | Default | Description             |
 | ------------------- | ------ | ------- | ----------------------- |
