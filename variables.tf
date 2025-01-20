@@ -14,6 +14,10 @@ variable "type" {
   type    = string
 }
 
+variable "image_filter" {
+  type    = string
+}
+
 variable "include_certificate" {
   type = bool
   default = false
