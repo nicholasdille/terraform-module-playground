@@ -3,7 +3,7 @@ output "name" {
 }
 
 output "image" {
-    value = hcloud_image.image.id
+    value = hcloud_server.playground.image
 }
 
 output "ipv4" {
