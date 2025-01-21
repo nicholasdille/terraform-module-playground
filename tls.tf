@@ -19,10 +19,13 @@ resource "acme_certificate" "playground" {
   count = var.include_certificate ? 1 : 0
 
   account_key_pem = acme_registration.reg[0].account_key_pem
-  common_name     = "playground.${var.domain}"
-  subject_alternative_names = [
-    "*.${var.name}.${var.domain}"
-  ]
+  common_name     = "${var.name}.${var.domain}"
+  subject_alternative_names = concat(
+    [
+      "*.${var.name}.${var.domain}"
+    ],
+    var.additional_subject_alternative_names
+  )
 
   dns_challenge {
     provider = "hetzner"

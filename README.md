@@ -78,6 +78,5 @@ Certificates for the A as well as the wildcard CNAME records are automatically c
 
 ## TODO
 
-- [ ] Finish support for SSHFP records
+- Finish support for SSHFP records ([unsupported](https://docs.hetzner.com/dns-console/dns/general/supported-dns-record-types) as of 2025-01-21)
 - [ ] Allow additional CNAME record for the A record
-- [ ] Allow additional alternative subject names in the certificate

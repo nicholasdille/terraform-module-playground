@@ -32,6 +32,11 @@ variable "use_letsencrypt_staging_ca" {
   default = false
 }
 
+variable "additional_subject_alternative_names" {
+  type    = list(string)
+  default = []
+}
+
 variable "include_sshfp" {
   type    = bool
   default = false
