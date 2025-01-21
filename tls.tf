@@ -1,6 +1,5 @@
 provider "acme" {
-  #server_url = "https://acme-staging-v02.api.letsencrypt.org/directory"
-  server_url = "https://acme-v02.api.letsencrypt.org/directory"
+  server_url = var.use_letsencrypt_staging_ca ? "https://acme-staging-v02.api.letsencrypt.org/directory" : "https://acme-v02.api.letsencrypt.org/directory"
 }
 
 resource "tls_private_key" "certificate" {
@@ -19,8 +18,8 @@ resource "acme_registration" "reg" {
 resource "acme_certificate" "playground" {
   count = var.include_certificate ? 1 : 0
 
-  account_key_pem           = acme_registration.reg[0].account_key_pem
-  common_name               = "playground.${var.domain}"
+  account_key_pem = acme_registration.reg[0].account_key_pem
+  common_name     = "playground.${var.domain}"
   subject_alternative_names = [
     "*.${var.name}.${var.domain}"
   ]
@@ -39,8 +38,8 @@ resource "null_resource" "wait_for_ssh" {
 
   provisioner "remote-exec" {
     connection {
-      host = hcloud_server.playground.ipv4_address
-      user = "root"
+      host        = hcloud_server.playground.ipv4_address
+      user        = "root"
       private_key = tls_private_key.ssh_private_key.private_key_openssh
     }
 

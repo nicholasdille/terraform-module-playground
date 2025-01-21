@@ -4,7 +4,7 @@ resource "tls_private_key" "host-rsa" {
   count = var.include_sshfp ? 1 : 0
 
   algorithm = "RSA"
-  rsa_bits = 4096
+  rsa_bits  = 4096
 }
 
 resource "tls_private_key" "host-ecdsa" {
@@ -14,7 +14,7 @@ resource "tls_private_key" "host-ecdsa" {
 }
 
 resource "tls_private_key" "host-ed25519" {
-  count = var.include_sshfp ? 1 : 0
+  count     = var.include_sshfp ? 1 : 0
   algorithm = "ECDSA"
 }
 

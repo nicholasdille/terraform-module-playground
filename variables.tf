@@ -3,28 +3,37 @@ variable "name" {
 }
 
 variable "domain" {
-  type    = string
+  type = string
 }
 
 variable "location" {
-  type    = string
+  type = string
 }
 
 variable "type" {
-  type    = string
+  type = string
 }
 
 variable "image_filter" {
-  type    = string
+  type = string
+}
+
+variable "cloud_init_user_data" {
+  type = string
 }
 
 variable "include_certificate" {
-  type = bool
+  type    = bool
+  default = false
+}
+
+variable "use_letsencrypt_staging_ca" {
+  type    = bool
   default = false
 }
 
 variable "include_sshfp" {
-  type = bool
+  type    = bool
   default = false
 }
 
