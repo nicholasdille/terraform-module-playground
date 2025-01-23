@@ -19,7 +19,8 @@ variable "image_filter" {
 }
 
 variable "cloud_init_user_data" {
-  type = string
+  type    = string
+  default = ""
 }
 
 variable "include_certificate" {

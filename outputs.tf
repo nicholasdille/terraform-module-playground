@@ -2,6 +2,10 @@ output "name" {
   value = var.name
 }
 
+output "dns_name" {
+  value = "${var.name}.${var.domain}"
+}
+
 output "image" {
   value = hcloud_server.playground.image
 }
