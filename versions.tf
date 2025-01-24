@@ -1,14 +1,12 @@
 terraform {
   required_providers {
     hcloud = {
-      # https://registry.terraform.io/providers/hetznercloud/hcloud/latest/docs
       source  = "hetznercloud/hcloud"
       version = "1.49.1"
     }
     hetznerdns = {
-      # https://registry.terraform.io/providers/timohirt/hetznerdns/latest/docs
-      source  = "timohirt/hetznerdns"
-      version = "2.2.0"
+      source  = "germanbrew/hetznerdns"
+      version = "3.3.3"
     }
     acme = {
       source  = "vancluever/acme"

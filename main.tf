@@ -3,5 +3,5 @@ provider "hcloud" {
 }
 
 provider "hetznerdns" {
-  apitoken = var.hetznerdns_token
+  api_token = var.hetznerdns_token
 }
