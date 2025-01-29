@@ -19,7 +19,8 @@ output "ipv6" {
 }
 
 output "ssh_private_key" {
-  value = tls_private_key.ssh_private_key.private_key_openssh
+  value     = tls_private_key.ssh_private_key.private_key_openssh
+  sensitive = true
 }
 
 output "ssh_fingerprint_sha256" {
