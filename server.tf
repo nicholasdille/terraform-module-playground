@@ -1,5 +1,6 @@
 data "hcloud_image" "image" {
-  with_selector = var.image_filter
+  name          = var.image_name
+  with_selector = var.image_name != null ? null : var.image_filter
   most_recent   = true
 }
 

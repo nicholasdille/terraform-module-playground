@@ -14,8 +14,14 @@ variable "type" {
   type = string
 }
 
+variable "image_name" {
+  type    = string
+  default = null
+}
+
 variable "image_filter" {
-  type = string
+  type    = string
+  default = null
 }
 
 variable "cloud_init_user_data" {
