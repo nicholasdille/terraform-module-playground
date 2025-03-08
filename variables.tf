@@ -29,6 +29,11 @@ variable "cloud_init_user_data" {
   default = ""
 }
 
+variable "include_dns" {
+  type    = bool
+  default = true
+}
+
 variable "include_certificate" {
   type    = bool
   default = false

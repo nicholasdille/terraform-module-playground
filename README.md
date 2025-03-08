@@ -18,6 +18,7 @@ module "foo" {
     hcloud_token = var.hcloud_token
     hetznerdns_token = var.hetznerdns_token
 
+    include_dns = true
     include_certificate = true
     include_sshfp = false
 }
@@ -37,6 +38,7 @@ The following arguments are supported:
 | type                | string |         | Type of the VM, see [website](https://www.hetzner.com/de/cloud/) or [API](https://docs.hetzner.cloud/#server-types) |
 | hcloud_token        | string |         | Hetzner Cloud API token, see [API](https://docs.hetzner.cloud/#authentication) |
 | hetznerdns_token    | string |         | Hetzner DNS API token, see [API](https://dns.hetzner.com/api-docs) |
+| include_dns         | bool   | true    | Include DNS record       |
 | include_certificate | bool   | false   | Include certificate     |
 | include_sshfp       | bool   | false   | Include SSHFP record    |
 

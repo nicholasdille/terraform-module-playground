@@ -3,6 +3,8 @@ data "hetznerdns_zone" "main" {
 }
 
 resource "hetznerdns_record" "hosta" {
+  count = var.include_dns ? 1 : 0
+
   zone_id = data.hetznerdns_zone.main.id
   name    = var.name
   value   = hcloud_server.playground.ipv4_address
@@ -11,6 +13,8 @@ resource "hetznerdns_record" "hosta" {
 }
 
 resource "hetznerdns_record" "hostaaaa" {
+  count = var.include_dns ? 1 : 0
+
   zone_id = data.hetznerdns_zone.main.id
   name    = var.name
   value   = hcloud_server.playground.ipv6_address
@@ -19,6 +23,8 @@ resource "hetznerdns_record" "hostaaaa" {
 }
 
 resource "hetznerdns_record" "wildcard" {
+  count = var.include_dns ? 1 : 0
+
   zone_id = data.hetznerdns_zone.main.id
   name    = "*.${var.name}"
   value   = hetznerdns_record.hosta.name
