@@ -27,7 +27,7 @@ resource "hetznerdns_record" "wildcard" {
 
   zone_id = data.hetznerdns_zone.main.id
   name    = "*.${var.name}"
-  value   = hetznerdns_record.hosta.name
+  value   = hetznerdns_record.hosta[0].name
   type    = "CNAME"
   ttl     = 120
 }
