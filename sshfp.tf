@@ -21,7 +21,7 @@ resource "tls_private_key" "host-ed25519" {
 resource "hetznerdns_record" "sshfp-rsa" {
   count = var.include_sshfp ? 1 : 0
 
-  zone_id = data.hetznerdns_zone.main.id
+  zone_id = data.hetznerdns_zone.main[0].id
   name    = var.name
   value   = "1 2 ${tls_private_key.host-rsa[0].public_key_fingerprint_sha256}"
   type    = "SSHFP"
