@@ -1,4 +1,6 @@
 data "hetznerdns_zone" "main" {
+  count = var.include_dns ? 1 : 0
+
   name = var.domain
 }
 
