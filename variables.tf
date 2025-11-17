@@ -58,6 +58,6 @@ variable "hcloud_token" {
   sensitive = true
 }
 
-variable "hetznerdns_token" {
+variable "hcloud_dns_token" {
   sensitive = true
 }

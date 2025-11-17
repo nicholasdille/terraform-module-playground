@@ -1,35 +1,49 @@
-data "hetznerdns_zone" "main" {
+data "hcloud_zone" "main" {
+  provider = hcloud.dns
+
   count = var.include_dns ? 1 : 0
 
   name = var.domain
 }
 
-resource "hetznerdns_record" "hosta" {
+resource "hcloud_rrset" "hosta" {
+  provider = hcloud.dns
+
   count = var.include_dns ? 1 : 0
 
-  zone_id = data.hetznerdns_zone.main[0].id
-  name    = var.name
-  value   = hcloud_server.playground.ipv4_address
-  type    = "A"
-  ttl     = 120
+  zone = data.hcloud_zone.main.name
+  name = var.name
+  type = "A"
+  ttl  = 120
+  records = [
+    { value = hcloud_server.playground.ipv4_address },
+  ]
 }
 
 resource "hetznerdns_record" "hostaaaa" {
+  provider = hcloud.dns
+
   count = var.include_dns ? 1 : 0
 
-  zone_id = data.hetznerdns_zone.main[0].id
-  name    = var.name
-  value   = hcloud_server.playground.ipv6_address
-  type    = "AAAA"
-  ttl     = 120
+  zone = data.hcloud_zone.main.name
+  name = var.name
+  type = "AAAA"
+  ttl  = 120
+  records = [
+    { value = hcloud_server.playground.ipv6_address },
+  ]
 }
 
 resource "hetznerdns_record" "wildcard" {
+  provider = hcloud.dns
+
   count = var.include_dns ? 1 : 0
 
-  zone_id = data.hetznerdns_zone.main[0].id
-  name    = "*.${var.name}"
-  value   = hetznerdns_record.hosta[0].name
-  type    = "CNAME"
-  ttl     = 120
+  zone = data.hcloud_zone.main.name
+  name = "*.${var.name}"
+  type = "CNAME"
+  ttl  = 120
+  records = [
+    { value = hetznerdns_record.hosta[0].name },
+  ]
 }

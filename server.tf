@@ -1,10 +1,12 @@
 data "hcloud_image" "image" {
+  provider      = hcloud.default
   name          = var.image_name
   with_selector = var.image_name != null ? null : var.image_filter
   most_recent   = true
 }
 
 resource "hcloud_server" "playground" {
+  provider    = hcloud.default
   name        = var.name
   location    = var.location
   server_type = var.type

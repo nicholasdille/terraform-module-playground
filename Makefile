@@ -1,4 +1,4 @@
-TF     := terraform
+TF     := tofu
 
 .PHONY:
 clean: ## Remove all generated files

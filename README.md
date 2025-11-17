@@ -8,19 +8,19 @@ See the following example how to use the module:
 
 ```hcl
 module "foo" {
-    source = "github.com/nicholasdille/terraform-module-playground"
+    source              = "github.com/nicholasdille/terraform-module-playground"
 
-    name = "playground"
-    domain = "inmylab.de"
-    location = "fsn1"
-    type = "cpx32"
+    name                = "playground"
+    domain              = "inmylab.de"
+    location            = "fsn1"
+    type                = "cpx32"
 
-    hcloud_token = var.hcloud_token
-    hetznerdns_token = var.hetznerdns_token
+    hcloud_token        = var.hcloud_token
+    hcloud_dns_token    = var.hetznerdns_token
 
-    include_dns = true
+    include_dns         = true
     include_certificate = true
-    include_sshfp = false
+    include_sshfp       = false
 }
 ```
 
@@ -36,9 +36,9 @@ The following arguments are supported:
 | domain              | string |         | Name of the DNS zone    |
 | location            | string |         | Location of the VM, see [API](https://docs.hetzner.cloud/#locations) |
 | type                | string |         | Type of the VM, see [website](https://www.hetzner.com/de/cloud/) or [API](https://docs.hetzner.cloud/#server-types) |
-| hcloud_token        | string |         | Hetzner Cloud API token, see [API](https://docs.hetzner.cloud/#authentication) |
-| hetznerdns_token    | string |         | Hetzner DNS API token, see [API](https://dns.hetzner.com/api-docs) |
-| include_dns         | bool   | true    | Include DNS record       |
+| hcloud_token        | string |         | Hetzner Cloud API token for IaC, see [API](https://docs.hetzner.cloud/#authentication) |
+| hcloud_dns_token    | string |         | Hetzner Cloud API token for DNS, see [API](https://docs.hetzner.cloud/#authentication) |
+| include_dns         | bool   | true    | Include DNS record      |
 | include_certificate | bool   | false   | Include certificate     |
 | include_sshfp       | bool   | false   | Include SSHFP record    |
 
@@ -80,5 +80,5 @@ Certificates for the A as well as the wildcard CNAME records are automatically c
 
 ## TODO
 
-- Finish support for SSHFP records ([unsupported](https://docs.hetzner.com/dns-console/dns/general/supported-dns-record-types) as of 2025-01-21)
+- Finish support for SSHFP records ([unsupported](https://docs.hetzner.com/networking/dns/record-types/overview) as of 2025-11-17)
 - [ ] Allow additional CNAME record for the A record

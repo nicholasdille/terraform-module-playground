@@ -1,7 +1,3 @@
-provider "acme" {
-  server_url = var.use_letsencrypt_staging_ca ? "https://acme-staging-v02.api.letsencrypt.org/directory" : "https://acme-v02.api.letsencrypt.org/directory"
-}
-
 resource "tls_private_key" "certificate" {
   count = var.include_certificate ? 1 : 0
 

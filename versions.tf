@@ -4,10 +4,6 @@ terraform {
       source  = "hetznercloud/hcloud"
       version = "1.49.1"
     }
-    hetznerdns = {
-      source  = "germanbrew/hetznerdns"
-      version = "3.3.3"
-    }
     acme = {
       source  = "vancluever/acme"
       version = "2.28.1"
@@ -25,4 +21,18 @@ terraform {
       version = "3.2.3"
     }
   }
+}
+
+provider "hcloud" {
+  alias = "default"
+  token = var.hcloud_token
+}
+
+provider "hcloud" {
+  alias = "dns"
+  token = var.hcloud_dns_token
+}
+
+provider "acme" {
+  server_url = var.use_letsencrypt_staging_ca ? "https://acme-staging-v02.api.letsencrypt.org/directory" : "https://acme-v02.api.letsencrypt.org/directory"
 }
